@@ -7,6 +7,7 @@ let's confirm we have ansible installed on our laptop
 ```
 ansible-playbook --version
 ```
+
 let's create new folder to hold the code we need to deploy newrelic with ansible.
 ```
 mkdir newlic_ansible
@@ -22,9 +23,10 @@ let's create a folder to store our ansible roles, in our case just the newrelic 
 mkdir roles
 ansible-galaxy install newrelic.newrelic-infra -p roles 
 ```
+The last command downloaded the role from the ansible galaxy repository and placed it in the "roles" folder.
 
-let's make the folder to hold our configuration files
-fix your ssh user and password as needed. You will need an account with passwordless sudo access.
+let's make the folder to hold our configuration files.
+This file hold your ssh credentials. Adjust ssh user and password as needed. Keep in mind that the accoutn you will use needs passwordless sudo access.
 
 ```
 mkdir group_vars
@@ -95,9 +97,20 @@ let's confirm the content of the file
 cat hosts
 ```
 
+This file will let me deploy newrelic to two hosts of ip 192.168.0.83 and 192.168.0.84.
+
 we can now run ansible with the following command:
+
+```
+ansible-playbook --check -i hosts setup.yml
+```
+
+the `--check` wil run ansible in dry-run mode.
+examine the output and confirm the behaviours.
+
+Now you can run ansible to deploy
+
 ```
 ansible-playbook -i hosts setup.yml
 ```
-
 within five minutes the hosts should show up in the dashboard.
