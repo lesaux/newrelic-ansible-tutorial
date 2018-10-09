@@ -97,7 +97,7 @@ let's confirm the content of the file
 cat hosts
 ```
 
-This file will let me deploy newrelic to two hosts of ip 192.168.0.83 and 192.168.0.84.
+This file will let me deploy newrelic to two hosts of ip 192.168.0.83 and 192.168.0.84. The name of our hostgroup is "frontends" (consistent with what is used in setup.yml file).
 
 we can now run ansible with the following command:
 
